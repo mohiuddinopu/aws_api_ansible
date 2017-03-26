@@ -6,38 +6,38 @@ To get started,
 
 1. Install Ansible 
 
-Linux 
+	Linux 
 
-sudo easy_install pip
-sudo pip install ansible
+		sudo easy_install pip
+		sudo pip install ansible
 
-Unix
+	Unix
 
-brew install ansible
-
-
-It suggested to run Ansible master server in Linux or Unix machine. Installing and running Ansible master in Windows is fairly complex. One can follow this tutorial to do so. 
-
-https://www.jeffgeerling.com/blog/running-ansible-within-windows
+		brew install ansible
 
 
-Test Ansible installation
+	It suggested to run Ansible master server in Linux or Unix machine. Installing and running Ansible master in Windows is fairly complex. One can follow this tutorial to do so. 
 
-In command line, 
-  ansible --version 
+		https://www.jeffgeerling.com/blog/running-ansible-within-windows
+
+
+	Test Ansible installation
+
+	In command line, 
+  		ansible --version 
   
-This should produce similar outout 
+	This should produce output similar as follows  
 
-Output
-ansible 2.1.1.0
-  config file =
-  configured module search path = Default w/o overrides
+
+		ansible 2.1.1.0
+		config file =
+		configured module search path = Default w/o overrides
   
   
-To run this playbook, from command line, 
+2. Run this playbook, from command line, 
 
-git clone https://github.com/mohiuddinopu/aws_api_ansible.git
-cd aws_api_ansible
-ansible-playbook ansible_deploy_ec2-instances.yml
+		git clone https://github.com/mohiuddinopu/aws_api_ansible.git
+		cd aws_api_ansible
+		ansible-playbook ansible_deploy_ec2-instances.yml
 
 
