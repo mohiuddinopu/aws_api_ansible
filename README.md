@@ -1,6 +1,6 @@
 # Instructions
 
-This Ansible Playbook creates ssh key, security group, applies security rules for port 22 and 80 and creates the given number of ec-instances. 
+This Ansible Playbook creates ssh key, security group, applies security rules for port 22 and 80 and creates the given number of ec2-instances. 
 
 To get started, one will need a AWS account and security credentials 
 
