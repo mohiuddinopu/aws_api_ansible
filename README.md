@@ -1,4 +1,4 @@
-# aws_api_ansible
+# Instructions
 
 This Ansible Playbook creates ssh key, security group, applies security rules for port 22 and 80 and creates the given number of ec-instances. 
 
