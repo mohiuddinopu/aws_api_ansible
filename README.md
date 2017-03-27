@@ -6,14 +6,14 @@ To get started, one will need a AWS account and security keys
 
 
 1. Go to: http://aws.amazon.com/
-2. Sign Up & create a new account (they'll give you the option for 1 year trial or similar)
+2. Sign Up & create a new account (they "MAY" give you the option for 1 year trial or similar)
 3. Go to your AWS account overview
 4. Account menu in the upper-right (has your name on it)
 5. sub-menu: Security Credentials
 
 
 
-After you have your account setup and retrieved security credentials, you can run this playbook 
+After you have your account setup and retrieved security credentials, you can run the playbook 
 
 1. Install Ansible 
 
@@ -32,9 +32,8 @@ After you have your account setup and retrieved security credentials, you can ru
 		https://www.jeffgeerling.com/blog/running-ansible-within-windows
 
 
-	Test Ansible installation
+	Test Ansible installation. In command line, 
 
-	In command line, 
   		ansible --version 
   
 	This should produce output similar as follows  
@@ -71,3 +70,7 @@ After you have your account setup and retrieved security credentials, you can ru
 		b. Sign in
 		c. Navigate to EC2 > EC2 Dashboard > Running Instances 
 		d. Check for newly created instances 
+
+
+
+NOTE: Terminate your instances once done with your tasks. You may get charges if the instances are not terminated. 
