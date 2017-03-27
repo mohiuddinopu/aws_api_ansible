@@ -2,14 +2,14 @@
 
 This Ansible Playbook creates ssh key, security group, applies security rules for port 22 and 80 and creates the given number of ec-instances. 
 
-To get started, one will need a AWS account and security keys
+To get started, one will need a AWS account and security credentials 
 
 
 1. Go to: http://aws.amazon.com/
-2. Sign Up & create a new account (they "MAY" give you the option for 1 year trial or similar)
+2. Sign Up & create a new account (they "MAY" give you the option for 1 year trial or similar. Requires payment information)
 3. Go to your AWS account overview
 4. Account menu in the upper-right (has your name on it)
-5. sub-menu: Security Credentials
+5. Sub-menu: Security Credentials
 
 
 
@@ -27,7 +27,7 @@ After you have your account setup and retrieved security credentials, you can ru
 		brew install ansible
 
 
-	It suggested to run Ansible master server in Linux or Unix machine. Installing and running Ansible master in Windows is fairly complex. One can follow this tutorial to do so. 
+	It is suggested to run Ansible master server in Linux or Unix machine. Installing and running Ansible master in Windows is fairly complex. One can follow this tutorial to do so. 
 
 		https://www.jeffgeerling.com/blog/running-ansible-within-windows
 
@@ -66,6 +66,7 @@ After you have your account setup and retrieved security credentials, you can ru
 
 
 4. Check instances 
+
 		a. Go to: http://aws.amazon.com/
 		b. Sign in
 		c. Navigate to EC2 > EC2 Dashboard > Running Instances 
@@ -73,4 +74,4 @@ After you have your account setup and retrieved security credentials, you can ru
 
 
 
-NOTE: Terminate your instances once done with your tasks. You may get charges if the instances are not terminated. 
+NOTE: Terminate your instances once done with your usage. You will get charged if the instances are not terminated. 
