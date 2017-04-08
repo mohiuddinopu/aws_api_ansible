@@ -1,0 +1,7 @@
+region: us-east-1
+group_name: ec2_server_group
+instance_type: t1.micro
+aws_access_key: AKIAI26KOEVKNJPWMYHA
+aws_secret_key: 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
+image_id: ami-1643ff7e
+number_of_instances: 1

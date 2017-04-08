@@ -1,20 +1,14 @@
 ---
-- hosts: localhost
-  vars:
-    region: us-east-1
-    group_name: ec2_server_group
-    instance_type: t2.micro 
-    aws_access_key: xxxxxxxxxxxxx
-    aws_secret_key: yyyyyyyyyyyyy
-    image_id: ami-b63769a1
-    number_of_instances: 1
-
-  tasks:   
     - name: create ec2 key
       ec2_key:
          name: my_key
          state: present
          region: "{{ region }}"
+      register: ec2_key
+
+    - name: save private key
+      copy: content="{{ ec2_key.key.private_key }}" dest="keys/my_key.pem" mode=0600
+      when: ec2_key.changed
 
     - name: Create group
       ec2_group: 
@@ -30,6 +24,14 @@
           - proto: tcp
             from_port: 22
             to_port: 22
+            cidr_ip: 0.0.0.0/0
+          - proto: tcp
+            from_port: 7189
+            to_port: 7189
+            cidr_ip: 0.0.0.0/0
+          - proto: tcp
+            from_port: 7180
+            to_port: 7180
             cidr_ip: 0.0.0.0/0
          rules_egress: 
           - proto: all
@@ -47,11 +49,14 @@
          wait: true
          wait_timeout: 500
          count: "{{ number_of_instances }}"
-      register: ec2_out
+         instance_tags:
+             Name: ec2s
+      register: ec2
 
-    - debug: var=ec2_out
-    - debug: var=ec2_out.instances.public_dns_name
+#    - name: save IP to inventory file
+#      copy: content="[webservers]{{'\n'}}{{ item.public_ip }}" dest=/usr/local/etc/ansible/hosts
+#      with_items: ec2.instances
 
-#    - name: Wait for the instaces to be up
-#      wait_for: host="{{ item.instances.public_dns_name }}" port=22 delay=60 timeout=230 state=started
-#      with_items: '"{{ ec2_out }}"'
+    - name: Add IP to ec2_hosts group
+      add_host: hostname={{ item.public_ip }} groups=ec2_hosts
+      with_items: '{{ec2.instances}}'
