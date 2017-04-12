@@ -15,16 +15,21 @@ To get started, one will need a AWS account and security credentials
 
 After you have your account setup and retrieved security credentials, you can run the playbook 
 
-1. Install Ansible 
+1. Install Ansible and Git
 
 	Linux 
 
+		yum install git-all
 		sudo easy_install pip
 		sudo pip install ansible
 
 	Unix
 
-		brew install ansible
+		brew install ansible git-all
+		
+	To install git on Mac, follow this link
+		https://git-scm.com/book/en/v2/Getting-Started-Installing-Git
+		
 
 
 	It is suggested to run Ansible master server in Linux or Unix machine. Installing and running Ansible master in Windows is fairly complex. One can follow this tutorial to do so. 
@@ -58,19 +63,53 @@ After you have your account setup and retrieved security credentials, you can ru
     	number_of_instances: 1
 		
 
-3. Run the playbook, from command line, 
+3. Download git repository 
 
 		git clone https://github.com/mohiuddinopu/aws_api_ansible.git
-		cd aws_api_ansible
-		ansible-playbook ansible_deploy_ec2-instances.yml
 
 
-4. Check instances 
+4. Check EC2 Instances 
 
 		a. Go to: http://aws.amazon.com/
 		b. Sign in
 		c. Navigate to EC2 > EC2 Dashboard > Running Instances 
 		d. Check for newly created instances 
+
+5. Run playbooks
+		
+		ansible-playbook create_ec2_instances.yml
+	  	ansible-playbook create_cloudera_director_instance.yml
+  		ansible-playbook create_wordpress_instance.yml
+  
+6. Accessing instance
+
+		a. To access the ec2 instance http://aws.amazon.com/
+		b. Navigate to EC2 > EC2 Dashboard > Running Instances 
+		c. Select the instance you want to log in, click 'Connect'
+		d. SSH keys are stored in 'keys' directory in your ansible repo path
+
+7. Accessing Cloudera Director(Allow at least 5 minutes of time for the Director process to be up and running)
+
+		a. To access the ec2 instance http://aws.amazon.com/
+		b. Navigate to EC2 > EC2 Dashboard > Running Instances 
+		c. Select the Cloudera Director instance, and look for the Public IPV4
+		d. In a browser, navigate to <Public IP>:7189
+
+8. Accessing WordPress
+
+		a. To access the ec2 instance http://aws.amazon.com/
+		b. Navigate to EC2 > EC2 Dashboard > Running Instances 
+		c. Select the Wordpress instance, and look for the Public IPV4
+		d. In a browser, navigate to <Public IP>
+		
+9. Accessing WordPress Admin UI
+
+		a. To access the ec2 instance http://aws.amazon.com/
+		b. Navigate to EC2 > EC2 Dashboard > Running Instances
+		c. Select WordPress instance, and click the Actions button. In the drop down menu, select Instance Setting, and choose Get System Log
+		d. In the system log window, scroll through to the bottom to find the password that's surrounded by hash marks
+		
+				
 
 
 
