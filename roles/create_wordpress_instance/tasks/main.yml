@@ -7,7 +7,7 @@
       register: wordpress_key
 
     - name: save private key
-      copy: content="{{ ec2_key.key.private_key }}" dest="keys/my_key.pem" mode=0600
+      copy: content="{{ wordpress_key.key.private_key }}" dest="keys/my_key.pem" mode=0600
       when: wordpress_key.changed
 
     - name: Create group

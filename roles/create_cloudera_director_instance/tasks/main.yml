@@ -7,7 +7,7 @@
       register: cloudera_director_key
 
     - name: save private key
-      copy: content="{{ ec2_key.key.private_key }}" dest="keys/my_key.pem" mode=0600
+      copy: content="{{ cloudera_director_key.key.private_key }}" dest="keys/my_key.pem" mode=0600
       when: cloudera_director_key.changed
 
     - name: Create group
