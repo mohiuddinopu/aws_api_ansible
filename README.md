@@ -110,8 +110,7 @@ After you have your account setup and retrieved security credentials, you can ru
 		c. Select WordPress instance, and click the Actions button. In the drop down menu, select Instance Setting, and choose Get System Log
 		d. In the system log window, scroll through to the bottom to find the password that's surrounded by hash marks
 		
-				
-	![Alt text](/Users/mohiuddin/Desktop/wordpress_admin_password.png?raw=true "WordPress admin password")
+<img width="832" alt="wordpress_admin_password" src="https://cloud.githubusercontent.com/assets/14286463/24945912/18c8b096-1f2f-11e7-851e-b11fed5ff1cd.png">
 
 
 NOTE: Terminate your instances once done with your usage. You will get charged if the instances are not terminated. 
