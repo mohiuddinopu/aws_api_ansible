@@ -1,0 +1,8 @@
+aws_access_key: xxxxxxxxxx
+aws_secret_key: yyyyyyyyyy
+region: us-east-1
+group_name: wordPress
+instance_tag: EC2 Wordpress
+instance_type: t2.micro
+image_id: ami-b33e8ca5
+number_of_instances: 1

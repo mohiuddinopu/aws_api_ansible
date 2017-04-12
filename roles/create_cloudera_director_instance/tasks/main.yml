@@ -1,25 +1,14 @@
 ---
-- hosts: localhost
-  vars:
-    region: us-east-1
-    group_name: wordPress_group
-    instance_type: t2.micro 
-    aws_access_key: 
-    aws_secret_key: 
-    image_id: ami-b33e8ca5
-    number_of_instances: 1
-
-  tasks:   
     - name: create ec2 key
       ec2_key:
          name: my_key
          state: present
          region: "{{ region }}"
-      register: ec2_key
+      register: cloudera_director_key
 
     - name: save private key
       copy: content="{{ ec2_key.key.private_key }}" dest="keys/my_key.pem" mode=0600
-      when: ec2_key.changed
+      when: cloudera_director_key.changed
 
     - name: Create group
       ec2_group: 
@@ -61,18 +50,5 @@
          wait_timeout: 500
          count: "{{ number_of_instances }}"
          instance_tags:
-             Name: ec2s
+             Name: "{{ instance_tag }}"
       register: ec2
-
-    - debug: var=ec2.instance_ids
-
-    - debug: var=item.public_ip
-      with_items: ec2.instances
-
-    - name: Wait for the instaces to be up
-      wait_for: host=item.public_ip port=22 delay=60 timeout=230 state=started
-      with_items: ec2.instances
-
-#    - copy:
-#        src: install_director.sh
-#        dest: /tmp/install_director.sh

@@ -1,3 +1,0 @@
----
-    - name: create directory
-      shell: mkdir /tmp/yahoo

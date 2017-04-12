@@ -1,0 +1,6 @@
+-   name: create_cloudera_director_instance
+    hosts: localhost
+    connection: local
+    gather_facts: False
+    roles:
+        - create_cloudera_director_instance        

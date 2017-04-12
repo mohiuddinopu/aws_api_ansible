@@ -1,0 +1,8 @@
+aws_access_key: xxxxxxxxxx
+aws_secret_key: yyyyyyyyyy
+region: us-east-1
+group_name: director
+instance_tag: Cloudera Director
+instance_type: t2.micro
+image_id: ami-f3e56ee5
+number_of_instances: 1
