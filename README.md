@@ -108,7 +108,7 @@ After you have your account setup and retrieved security credentials, you can ru
 		a. To access the ec2 instance http://aws.amazon.com/
 		b. Navigate to EC2 > EC2 Dashboard > Running Instances
 		c. Select WordPress instance, and click the Actions button. In the drop down menu, select Instance Setting, and choose Get System Log
-		d. In the system log window, scroll through to the bottom to find the password that's surrounded by hash marks
+		d. In the system log window, scroll through to the bottom to find the password that's surrounded by hash marks, as shown below
 		
 <img width="832" alt="wordpress_admin_password" src="https://cloud.githubusercontent.com/assets/14286463/24945912/18c8b096-1f2f-11e7-851e-b11fed5ff1cd.png">
 
