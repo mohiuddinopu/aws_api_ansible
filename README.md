@@ -49,10 +49,14 @@ After you have your account setup and retrieved security credentials, you can ru
 		configured module search path = Default w/o overrides
   
 
-2. Update the keys as per your account information(required)
+3. Download git repository 
 
-	    aws_access_key: <your aws access key> 
-   		aws_secret_key: <your aws security key> 
+		git clone https://github.com/mohiuddinopu/aws_api_ansible.git
+
+2. Update the keys in "..roles/<playbook>/vars/main.yml" as per your account information(required)
+
+       	    aws_access_key: <your aws access key> 
+     		aws_secret_key: <your aws security key> 
 
 	Update the following variables as per needed(optional) 
 		
@@ -63,9 +67,6 @@ After you have your account setup and retrieved security credentials, you can ru
     	number_of_instances: 1
 		
 
-3. Download git repository 
-
-		git clone https://github.com/mohiuddinopu/aws_api_ansible.git
 
 
 4. Check EC2 Instances 
