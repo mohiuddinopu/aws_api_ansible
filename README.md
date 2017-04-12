@@ -55,8 +55,8 @@ After you have your account setup and retrieved security credentials, you can ru
 
 2. Update the keys in "..roles/<playbook>/vars/main.yml" as per your account information(required)
 
-       	    aws_access_key: <your aws access key> 
-     		aws_secret_key: <your aws security key> 
+       		aws_access_key: <your aws access key> 
+		aws_secret_key: <your aws security key> 
 
 	Update the following variables as per needed(optional) 
 		
