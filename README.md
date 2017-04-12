@@ -111,7 +111,7 @@ After you have your account setup and retrieved security credentials, you can ru
 		d. In the system log window, scroll through to the bottom to find the password that's surrounded by hash marks
 		
 				
-
+	![Alt text](/Users/mohiuddin/Desktop/wordpress_admin_password.png?raw=true "WordPress admin password")
 
 
 NOTE: Terminate your instances once done with your usage. You will get charged if the instances are not terminated. 
