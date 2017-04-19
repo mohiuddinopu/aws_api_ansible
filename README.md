@@ -43,7 +43,6 @@ After you have your account setup and retrieved security credentials, you can ru
   
 	This should produce output similar as follows  
 
-
 		ansible 2.1.1.0
 		config file =
 		configured module search path = Default w/o overrides
