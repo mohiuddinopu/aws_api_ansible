@@ -43,4 +43,4 @@
          count: "{{ number_of_instances }}"
          instance_tags:
              Name: "{{ instance_tag }}"
-      register: ec2  
+      register: ec2
