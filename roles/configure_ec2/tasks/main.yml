@@ -1,0 +1,18 @@
+---
+    - name: install httpd
+      yum: name=httpd
+      become: true
+      become_user: root 
+   
+    - name: start the httpd service
+      service: name=httpd state=started
+      become: true
+      become_user: root
+
+    - name: Bootstrap HTML site
+      template:
+        src: index.html
+        dest: /var/www/html/index.html
+        mode: 0777
+      become: true
+      become_user: root

@@ -1,0 +1,13 @@
+-   name: Create AWS instance
+    hosts: localhost
+    connection: local
+    gather_facts: False
+    roles:
+        - create_ec2_instances
+
+-   name: Configure AWS instance
+    hosts: ec2hosts
+    user: ec2-user
+    gather_facts: true
+    roles:
+        - configure_ec2

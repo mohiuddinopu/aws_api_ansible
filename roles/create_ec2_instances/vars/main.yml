@@ -1,8 +1,8 @@
-aws_access_key: xxxxxxxxxx
-aws_secret_key: yyyyyyyyyy
+aws_access_key: xxxxxxxxx
+aws_secret_key: yyyyyyyyy
 region: us-east-1
 group_name: ec2_group
 instance_tag: Plain EC2
 instance_type: t2.micro
-image_id: ami-b33e8ca5
+image_id: ami-22ce4934
 number_of_instances: 1
