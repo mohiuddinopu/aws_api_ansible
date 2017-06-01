@@ -1,0 +1,12 @@
+aws_access_key: <>
+aws_secret_key: <>
+region: us-east-1
+group_name: wordPress
+instance_tag: EC2 Wordpress
+instance_type: t2.micro
+image_id: ami-b33e8ca5
+number_of_instances: 1
+password: strongPassword
+db_engine: MySQL
+db_admin: admin
+db_name: new_database
