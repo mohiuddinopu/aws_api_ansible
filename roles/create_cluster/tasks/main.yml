@@ -1,0 +1,86 @@
+---
+    - name: create ec2 key for edge node
+      ec2_key:
+         name: edge_key
+         state: present
+         region: "{{ region }}"
+      register: edge_key
+
+    - name: save edge node private key
+      copy: content="{{ edge_key.key.private_key }}" dest="keys/edge_key.pem" mode=0600
+      when: edge_key.changed
+
+    - name: Set authorized key from file
+      shell: ssh-add keys/edge_key.pem
+
+    - name: create ec2 key for cluster nodes
+      ec2_key:
+         name: node_key
+         state: present
+         region: "{{ region }}"
+      register: node_key
+
+    - name: save cluster node private key
+      copy: content="{{ node_key.key.private_key }}" dest="keys/node_key.pem" mode=0600
+      when: node_key.changed
+
+    - name: Set authorized key from file
+      shell: ssh-add keys/node_key.pem
+
+    - name: Create security group for egde node
+      ec2_group:
+         name: "{{ edge_group_name }}"
+         description: edge security group
+         region: "{{ region }}"
+         state: present
+         rules:
+          - proto: tcp
+            from_port: 80
+            to_port: 80
+            cidr_ip: 0.0.0.0/0
+
+          - proto: tcp
+            from_port: 7180
+            to_port: 7180
+            cidr_ip: 0.0.0.0/0
+
+          - proto: tcp
+            from_port: 22
+            to_port: 22
+            cidr_ip: 0.0.0.0/0
+
+         rules_egress:
+          - proto: all
+            cidr_ip: 0.0.0.0/0
+
+    - name: create edge ec2 instances
+      ec2:
+         aws_access_key: "{{ aws_access_key }}"
+         aws_secret_key: "{{ aws_secret_key }}"
+         key_name: edge_key
+         group: "{{ edge_group_name }}"
+         region: "{{ region }}"
+         instance_type: "{{ edge_instance_type }}"
+         image: "{{ image_id }}"
+         wait: true
+         wait_timeout: 500
+         count: "{{ number_of_edge_instances }}"
+         instance_tags:
+             Name: "{{ instance_tag }}"
+      register: edge_nodes
+
+    - name: associate new elastic IPs with each of the instances
+      ec2_eip:
+        device_id: "{{ item }}"
+      with_items: "{{ edge_nodes.instance_ids }}"
+
+    - name: Waiting for the instance to come
+      local_action: wait_for
+                    host={{ item.public_ip }}
+                    state=started
+                    port=22
+      with_items: edge_nodes.instances
+
+    - name: Add edge instance public IPs to host group
+      add_host: hostname={{ item.public_ip }} groups=edge_nodes_hosts
+      with_items: "{{ edge_nodes.instances }}"

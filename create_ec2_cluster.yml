@@ -1,0 +1,6 @@
+-   name: Create AWS Cluster
+    hosts: localhost
+    connection: local
+    gather_facts: False
+    roles:
+        - create_cluster
