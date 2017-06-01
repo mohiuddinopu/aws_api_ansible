@@ -1,0 +1,25 @@
+---
+# Basic mysql provisioning example
+
+    - name: create MySQL
+      rds:
+        command: create
+        region: "{{ region }}"
+        instance_name: "{{ db_name }}"
+        db_engine: "{{ db_engine }}"
+        size: 5
+        instance_type: "db.{{ instance_type }}"
+        username: "{{ db_admin }}"
+        password: "{{ password }}"
+        tags:
+          Environment: testing
+          Application: cms
+
+    # Create a read-only replica and wait for it to become available
+    -  name: careate replication instance 
+       rds:
+        command: replicate
+        instance_name: "{{ db_name }}-replica"
+        source_instance: "{{ db_name }}"
+        wait: yes
+        wait_timeout: 600

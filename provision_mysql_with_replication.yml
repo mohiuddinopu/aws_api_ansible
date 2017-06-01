@@ -1,0 +1,6 @@
+-   name: Create MYSQL instance with replication instance
+    hosts: localhost
+    connection: local
+    gather_facts: False
+    roles:
+        - provision_mysql_with_replication
