@@ -48,7 +48,7 @@
              Name: "{{ instance_tag }}"
       register: ec2
 
-    - name: Waiting for the instance to come
+    - name: Waiting for the instance to come online
       local_action: wait_for
                     host={{ item.public_ip }}
                     state=started
