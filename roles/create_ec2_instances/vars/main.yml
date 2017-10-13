@@ -3,6 +3,6 @@ aws_secret_key: yyyyyyyyy
 region: us-east-1
 group_name: ec2_group
 instance_tag: Plain EC2
-instance_type: t2.micro
+instance_type: m3.large
 image_id: ami-22ce4934
-number_of_instances: 1
+number_of_instances: 4
